@@ -1,0 +1,36 @@
+services:
+  mysql-db:
+    container_name: mysql-db
+    image: mysql:8
+    ports:
+      - '${MONGODB_PORT:-27017}:27017'
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USER:-user}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - mysql-data:/var/lib/mysql
+    restart: unless-stopped
+    networks:
+      - backend
+
+  phpmyadmin:
+    container_name: phpmyadmin
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - '${PHPMYADMIN_MYSQL_PORT:-8080}:80'
+    environment:
+      PMA_HOST: mysql-db
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+    depends_on:
+      - mysql-db
+    restart: unless-stopped
+    networks:
+      - backend
+
+networks:
+  backend:
+
+volumes:
+  mysql-data:

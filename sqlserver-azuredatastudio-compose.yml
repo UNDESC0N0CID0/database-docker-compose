@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sql_server
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=${DB_PASSWORD}
+      - MSSQL_PID=Express
+    ports:
+      - "1433:1433"
+    volumes:
+      - sql_data:/var/opt/mssql
+    networks:
+      - sql_network
+    restart: always
+    command: /bin/bash -c "sleep 20s && /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P ${DB_PASSWORD} -Q \"CREATE DATABASE ${DB_DATABASE};\" && /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P ${DB_PASSWORD} -Q \"CREATE LOGIN ${DB_USER} WITH PASSWORD = '${DB_PASSWORD}'; CREATE USER ${DB_USER} FOR LOGIN ${DB_USER}; ALTER SERVER ROLE sysadmin ADD MEMBER ${DB_USER};\""
+
+volumes:
+  sql_data:
+
+networks:
+  sql_network:
+    driver: bridge
+
+# services:
+#   sqlserver:
+#     container_name: sqlserver
+#     image: mcr.microsoft.com/mssql/server:2019-latest
+#     ports:
+#       - '${SQLSERVER_PORT:-1433}:1433'
+#     environment:
+#       ACCEPT_EULA: Y
+#       SA_PASSWORD: ${DB_PASSWORD}
+#       MSSQL_PID: Express
+#     volumes:
+#       - sqlserver-data:/var/opt/mssql
+#     restart: unless-stopped
+#     networks:
+#       - backend
+# networks:
+#   backend:
+
+# volumes:
+#   sqlserver-data:
