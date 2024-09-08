@@ -37,10 +37,9 @@ SQLSERVER_PORT=1433
 # Puertos para servicios web
 PHPMYADMIN_MYSQL_PORT=8080
 PHPMYADMIN_MARIADB_PORT=8081
-PGADMIN_PORT=8081
-MONGO_EXPRESS_PORT=8082
-ADMINER_PORT=8083
-AZURE_DATA_STUDIO_PORT=8084
+PGADMIN_PORT=8082
+MONGO_EXPRESS_PORT=8083
+ADMINER_PORT=8084
 
 POSTGRES_USER=${DB_USER}
 MYSQL_USER=${DB_USER}
@@ -92,7 +91,7 @@ docker-compose -f mysql-phpmyadmin-compose.yml -f postgresql-pgadmin-compose.yml
 ├── mongodb-express-compose.yml
 ├── mysql-phpmyadmin-compose.yml
 ├── postgres-pgadmin-compose.yml
-└── sqlserver-azuredatastudio-compose.yml
+└── sqlserver-compose.yml
 ```
 
 ## Configuraciones
@@ -120,6 +119,9 @@ docker-compose -f mysql-phpmyadmin-compose.yml -f postgresql-pgadmin-compose.yml
 ### SQL Server
 
 - SQL Server: `http://localhost:${SQLSERVER_PORT}` (por defecto 1433)
+
+> [!NOTE]
+> El usuario por defecto en SQL Server es SA
 
 ## Personalización
 
