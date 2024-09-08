@@ -8,7 +8,7 @@ Este repositorio contiene configuraciones de Docker Compose para varias bases de
 - MariaDB con phpMyAdmin
 - PostgreSQL con pgAdmin
 - MongoDB con Mongo Express
-- SQL Server con Azure Data Studio
+- SQL Server
 
 ## Requisitos previos
 
