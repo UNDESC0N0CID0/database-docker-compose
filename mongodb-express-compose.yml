@@ -18,7 +18,7 @@ services:
     container_name: mongo-express
     image: mongo-express
     ports:
-      - '8081:8081'
+      - '8083:8083'
     environment:
       ME_CONFIG_BASICAUTH_USERNAME: ${DB_USER:-root}
       ME_CONFIG_BASICAUTH_PASSWORD: ${DB_PASSWORD}
