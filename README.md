@@ -109,7 +109,7 @@ docker-compose -f mysql-phpmyadmin-compose.yml -f postgresql-pgadmin-compose.yml
 ### PostgreSQL y pgAdmin
 
 - PostgreSQL: `http://localhost:${POSTGRES_PORT}` (por defecto 5432)
-- pgAdmin: `http://localhost:${PGADMIN_PORT}` (por defecto 8081)
+- pgAdmin: `http://localhost:${PGADMIN_PORT}` (por defecto 8082)
 
 ### MongoDB y Mongo Express
 

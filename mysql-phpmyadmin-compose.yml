@@ -3,7 +3,7 @@ services:
     container_name: mysql-db
     image: mysql:8
     ports:
-      - '${MONGODB_PORT:-27017}:27017'
+      - '${MYSQL_PORT:-3306}:3306'
     environment:
       MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
       MYSQL_DATABASE: ${DB_DATABASE}

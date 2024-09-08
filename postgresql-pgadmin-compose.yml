@@ -18,7 +18,7 @@ services:
     container_name: pgadmin
     image: dpage/pgadmin4
     ports:
-      - '${PGADMIN_PORT:-8081}:80'
+      - '${PGADMIN_PORT:-8082}:80'
     environment:
       PGADMIN_DEFAULT_EMAIL: ${PGADMIN_EMAIL:-admin@example.com}
       PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_PASSWORD:-admin}

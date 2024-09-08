@@ -3,7 +3,7 @@ services:
     container_name: mariadb
     image: mariadb:latest
     ports:
-      - '${MARIADB_PORT:-3306}:3306'
+      - '${MARIADB_PORT:-3307}:3307'
     environment:
       MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
       MYSQL_DATABASE: ${DB_DATABASE}
